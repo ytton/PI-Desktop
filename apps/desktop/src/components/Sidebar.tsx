@@ -117,6 +117,7 @@ import {
   IconCircleAlert,
   IconNewSession,
   IconFolder,
+  IconFolderOpen,
   IconMore,
   IconNewProject,
   IconPin,
@@ -289,6 +290,9 @@ export function Sidebar({
   const newSession = useAppStore((s) => s.newSession);
   const forkSessionAction = useAppStore((s) => s.forkSession);
   const openProject = useAppStore((s) => s.openProject);
+  const createProjectFromPickedFolder = useAppStore(
+    (s) => s.createProjectFromPickedFolder,
+  );
   const refreshProject = useAppStore((s) => s.refreshProject);
   const clearProject = useAppStore((s) => s.clearProject);
   const activateProject = useAppStore((s) => s.activateProject);
@@ -1588,6 +1592,18 @@ export function Sidebar({
     }
   };
 
+  /**
+   * One pick, one project: the store owns the native folder picker and names
+   * the new project after the picked folder, so this stays a thin wrapper.
+   */
+  const openFolderAsProject = async () => {
+    try {
+      await createProjectFromPickedFolder();
+    } catch (error) {
+      reportError(error);
+    }
+  };
+
   const moveSessionToProject = useCallback(
     async (sessionId: string, projectPath: string, projectName: string) => {
       if (sessionId.startsWith("remote:")) return;
@@ -2696,16 +2712,28 @@ export function Sidebar({
           }}
         >
           <span className="sidebar-list-label">{t("nav.projects")}</span>
-          <TooltipButton
-            type="button"
-            className="sidebar-toolbar-button"
-            data-action="new-project"
-            tooltip={t("nav.newProject")}
-            ariaLabel={t("nav.newProject")}
-            onClick={() => void openProjectPicker()}
-          >
-            <IconNewProject size={14} />
-          </TooltipButton>
+          <div className="sidebar-toolbar-actions">
+            <TooltipButton
+              type="button"
+              className="sidebar-toolbar-button"
+              data-action="new-project"
+              tooltip={t("nav.newProject")}
+              ariaLabel={t("nav.newProject")}
+              onClick={() => void openProjectPicker()}
+            >
+              <IconNewProject size={14} />
+            </TooltipButton>
+            <TooltipButton
+              type="button"
+              className="sidebar-toolbar-button"
+              data-action="open-folder-as-project"
+              tooltip={t("nav.openFolderAsProject")}
+              ariaLabel={t("nav.openFolderAsProject")}
+              onClick={() => void openFolderAsProject()}
+            >
+              <IconFolderOpen size={14} />
+            </TooltipButton>
+          </div>
         </div>
 
         <div

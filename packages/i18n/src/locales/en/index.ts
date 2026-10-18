@@ -221,6 +221,7 @@ export const en = {
     home: "Home",
     newTask: "New task",
     newProject: "New project",
+    openFolderAsProject: "Open folder as project",
     projects: "Projects",
     plugins: "Extensions",
     settings: "Settings",

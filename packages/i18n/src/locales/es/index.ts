@@ -214,6 +214,7 @@ export const es = {
     "home": "Inicio",
     "newTask": "Nueva tarea",
     "newProject": "Nuevo proyecto",
+    "openFolderAsProject": "Abrir carpeta como proyecto",
     "projects": "Proyectos",
     "plugins": "Extensiones",
     "settings": "Configuración",

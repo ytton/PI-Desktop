@@ -2849,6 +2849,40 @@ identify the platform validation still needed.
   `04-ux/08-component-spec.md` (§3.9)
 - **Status**: Draft
 
+#### E2E-012c: Open a folder as a project from the Projects heading
+
+- **Preconditions**: App running; no project or create dialog open; one local
+  folder that is not an open project and one folder that already belongs to a
+  durable project group.
+- **Steps**:
+  1. Hover the sidebar `Projects` heading and inspect the revealed actions.
+  2. Click the folder-open action beside folder-plus and cancel the native
+     picker; inspect the sidebar, the active workspace, and the Home composer.
+  3. Click it again and pick the unrelated folder without opening the Create
+     project dialog.
+  4. Click it a third time and pick the folder that already belongs to the
+     durable group, first while that group is closed and then while it is open.
+  5. Click the action twice in a row before answering the first native picker.
+  6. Inspect the resulting project row, Project archive, and the settings
+     Add project entry point for a regression.
+- **Expected**: The heading reveals a keyboard-reachable folder-open action
+  beside folder-plus with its own accessible name, still hidden at rest. A
+  cancelled pick creates no project and no session, shows no error toast, and
+  leaves the active workspace and composer unchanged. A completed pick creates
+  exactly one logical project group whose primary root is the picked folder and
+  whose display name is that folder's name cut to the shared name budget, then
+  activates it as the workspace exactly as a dialog Create does. No Create
+  project dialog opens in any step. The folder that already belongs to a
+  durable group reopens that group at its primary root instead of creating a
+  duplicate group, in both its closed and open states. A second click while the
+  native picker is still open is ignored and creates nothing.
+- **Specs linked**: `04-ux/08-component-spec.md` (§3.5),
+  `04-ux/01-ui-ia.md` (§3.2)
+- **Acceptance**: C (project creation UI), D (single-folder project setup),
+  Accessibility, Localization
+- **Milestone**: M3
+- **Status**: Source-level regression covered; full UI scenario Draft
+
 #### E2E-013: Read-only tools work in project
 
 - **Preconditions**: Project directory open.

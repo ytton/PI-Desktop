@@ -223,6 +223,7 @@ export const tr = {
     home: "Ana sayfa",
     newTask: "Yeni görev",
     newProject: "Yeni proje",
+    openFolderAsProject: "Klasörü proje olarak aç",
     projects: "Projeler",
     plugins: "Uzantılar",
     settings: "Ayarlar",

@@ -213,6 +213,7 @@ export const ptBR = {
     home: "Início",
     newTask: "Nova tarefa",
     newProject: "Novo projeto",
+    openFolderAsProject: "Abrir pasta como projeto",
     projects: "Projetos",
     plugins: "Extensões",
     settings: "Configurações",

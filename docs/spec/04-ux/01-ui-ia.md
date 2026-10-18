@@ -31,9 +31,10 @@ destination, chat as the home surface, tools and permissions inline.
 
 - **Sidebar**: primary navigation — path-less conversations under a compact
   **Sessions** section with new-session and sort actions, retained open-project
-  groups under a following **Projects** section with a persistent new-project
-  action, and the WorkBuddy-inspired footer. The footer keeps compact Settings,
-  Extensions, Scheduled (clock), and notification icon actions. Each retained
+  groups under a following **Projects** section with persistent new-project and
+  open-folder-as-project actions, and the WorkBuddy-inspired footer. The footer
+  keeps compact Settings, Extensions, Scheduled (clock), and notification icon
+  actions. Each retained
   project is a
   path-keyed tab/group that can be
   collapsed independently. Project and conversation rows expose
@@ -210,8 +211,8 @@ destination, chat as the home surface, tools and permissions inline.
   without extra chrome. Its list shows at most five compact rows (146px) before
   scrolling internally, so standalone work stays visible without displacing
   project navigation. The following `Projects` heading exposes the
-  folder-picker action; retained project groups use the remaining height and
-  scroll independently.
+  new-project and open-folder-as-project actions; retained project groups use
+  the remaining height and scroll independently.
 - **Identity**: each project group is keyed by a host-owned logical group id;
   each root path remains canonical and is never inferred from an ambiguous
   folder basename. Legacy single-folder projects are compatibility groups.

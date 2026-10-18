@@ -223,6 +223,7 @@ export const ko = {
     home: "홈",
     newTask: "새 작업",
     newProject: "새 프로젝트",
+    openFolderAsProject: "폴더를 프로젝트로 열기",
     projects: "프로젝트",
     plugins: "확장 기능",
     settings: "설정",

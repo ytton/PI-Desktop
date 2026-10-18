@@ -572,6 +572,14 @@ visually distinct from list content.
   windows retain a single column and reachable actions. Light and dark themes
   preserve readable filled surfaces and visible keyboard focus, and transitions
   respect reduced motion.
+- Click the `Projects` heading folder-open action beside folder-plus: ask for
+  folders with the native picker and create the project straight away, without
+  the Create project dialog. The first picked folder becomes the primary root
+  and names the project through the same derived default the dialog uses, and
+  the project activates as the workspace as soon as the host answers.
+  Cancelling the picker creates nothing, reports nothing, and leaves the active
+  workspace untouched. A pick whose folder already belongs to a durable group
+  reopens that group at its primary root, exactly as Create does.
 - Right-click the `Projects` heading or empty project-list chrome: open a
   single-item create menu that runs the same Create project dialog action
 - Click project `+`: activate that project, then select its most recent empty

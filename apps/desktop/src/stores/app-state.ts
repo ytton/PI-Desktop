@@ -285,6 +285,12 @@ export type AppState = {
     folders: string[];
     primaryPath: string;
   }) => Promise<void>;
+  /**
+   * Ask the user for folders and create one project named after the first
+   * pick, without the Create project dialog. An existing group for any picked
+   * folder is opened instead of duplicated.
+   */
+  createProjectFromPickedFolder: () => Promise<void>;
   /** Clone a public git remote into a chosen folder, then create its project. */
   createProjectFromGit: (input: {
     name: string;

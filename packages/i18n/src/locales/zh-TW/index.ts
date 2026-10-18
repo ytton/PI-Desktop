@@ -216,6 +216,7 @@ export const zhTW = {
     home: "首頁",
     newTask: "新建任務",
     newProject: "新建專案",
+    openFolderAsProject: "開啟資料夾為專案",
     projects: "專案",
     plugins: "擴充套件",
     settings: "設定",

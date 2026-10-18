@@ -2,6 +2,7 @@ import { forgetTranscriptReadingState } from "../../lib/transcript-reading-posit
 import i18n from "i18next";
 import type { ProjectWorkspace } from "@pi-desktop/shared";
 import { api } from "../../lib/api";
+import { defaultProjectName } from "../../lib/project-name";
 import {
   rememberProject,
   removeRecentProject,
@@ -236,6 +237,7 @@ export function createProjectSlice({
   | "openProject"
   | "closeProjectDialog"
   | "createProjectFromFolders"
+  | "createProjectFromPickedFolder"
   | "createProjectFromRemote"
   | "createProjectFromGit"
   | "clearProject"
@@ -402,6 +404,21 @@ export function createProjectSlice({
         { get, set, runtime },
         { name, folders, primaryPath },
       ),
+    createProjectFromPickedFolder: async () => {
+      const picked = await api.pickProjectFolders();
+      const folders = picked.canceled ? [] : picked.folders;
+      if (folders.length === 0) return;
+      // The name comes from the same helper the Create project dialog derives
+      // its default from, so a quick pick and a dialog pick agree on the title.
+      await createNamedProjectGroup(
+        { get, set, runtime },
+        {
+          name: defaultProjectName({ source: "local", folders }),
+          folders,
+          primaryPath: folders[0],
+        },
+      );
+    },
     createProjectFromRemote: async ({ name, hostKey, path }) => {
       const normalizedName = normalizeProjectName(name);
       if (!normalizedName) throw new Error(i18n.t("errors.projectNameLength"));

@@ -216,6 +216,7 @@ export const zhCN = {
     home: "首页",
     newTask: "新建任务",
     newProject: "新建项目",
+    openFolderAsProject: "打开文件夹为项目",
     projects: "项目",
     plugins: "扩展",
     settings: "设置",
