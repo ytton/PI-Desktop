@@ -406,6 +406,8 @@ export const es = {
     "showEarlierMessages": "Mostrar mensajes anteriores",
     "copy": "Copiar",
     "copied": "Copiado",
+    "wrapLines": "Ajustar líneas",
+    "unwrapLines": "Desactivar ajuste de líneas",
     "copyFailed": "No se pudo copiar al portapapeles",
     "messageMenu": "Acciones del mensaje",
     "conversationMenu": "Acciones de la conversación",

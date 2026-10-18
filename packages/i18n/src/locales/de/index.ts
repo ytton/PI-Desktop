@@ -406,6 +406,8 @@ export const de = {
     "showEarlierMessages": "Frühere Nachrichten anzeigen",
     "copy": "Kopieren",
     "copied": "Kopiert",
+    "wrapLines": "Zeilen umbrechen",
+    "unwrapLines": "Zeilenumbruch deaktivieren",
     "copyFailed": "Kopieren in die Zwischenablage fehlgeschlagen",
     "messageMenu": "Nachrichtenaktionen",
     "conversationMenu": "Gesprächsaktionen",

@@ -418,6 +418,8 @@ export const en = {
     showEarlierMessages: "Show earlier messages",
     copy: "Copy",
     copied: "Copied",
+    wrapLines: "Wrap lines",
+    unwrapLines: "Disable line wrap",
     copyFailed: "Couldn't copy to the clipboard",
     messageMenu: "Message actions",
     conversationMenu: "Conversation actions",

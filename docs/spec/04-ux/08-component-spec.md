@@ -1575,7 +1575,11 @@ storage but compose into one assistant turn until the next user message.
   the turn settles only if the user has not interacted with it. The expanded
   content's left rule is itself a pointer and keyboard-focusable collapse
   control.
-- Hover code block: copy button appears
+- Hover code block: copy button and wrap toggle appear
+- Click the code block wrap toggle: switch that block between sideways scrolling
+  and soft wrapping. The toggle reports its state as a pressed control, stays
+  lit while wrapping is engaged, and is per block; a new render starts
+  unwrapped.
 - Click a transcript file reference with `:line[:column]`: resolve the file
   first, then open it in the host `file:` tab and scroll the requested line into
   view. Plain project-file references still prefer the bundled file view, whose
@@ -2150,10 +2154,15 @@ Renderer: `apps/desktop/src/components/Markdown.tsx` + `apps/desktop/src/lib/shi
   is constant regardless of block size.
 - **Code block chrome**: `.code-block` single-surface card (radius-md-plus,
   no border since D297 — a `--ds-tile` plate; dark `#282c34`, light `#fafafa` — matching One Dark Pro /
-  One Light editor bg). Header is transparent (language tag left, copy right);
-  body `pre`/`code`/token spans have **no nested background**, so Shiki token
-  colors sit on the one card surface. Body text at text-sm-plus /
-  leading-relaxed with horizontal scroll and tab-size 2.
+  One Light editor bg). Header is transparent (language tag left, wrap toggle
+  and copy on the right); body `pre`/`code`/token spans have **no nested
+  background**, so Shiki token colors sit on the one card surface. Body text at
+  text-sm-plus / leading-relaxed with horizontal scroll and tab-size 2. The
+  wrap toggle (`.code-wrap-btn`, `aria-pressed`) switches that one block to
+  soft wrapping — `white-space: pre-wrap`, `overflow-wrap: anywhere`, and a
+  column that no longer claims `fit-content` / full width — so long lines stop
+  pushing a scrollbar under the block; the engaged toggle keeps the code ink and
+  a `--ds-code-hover-bg` plate instead of the idle muted chrome.
 - **Prose**: calmer chat density — body at text-base / leading-prose with
   pretty wrapping; heading ramp h1 `text-xl` (no underline since D297) → h2
   `text-lg-plus` → h3 `text-lg` → h4 `text-base-plus` → h5/h6 `text-base`

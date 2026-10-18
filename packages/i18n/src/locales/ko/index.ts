@@ -415,6 +415,8 @@ export const ko = {
     showEarlierMessages: "이전 메시지 표시",
     copy: "복사",
     copied: "복사됨",
+    wrapLines: "줄 바꿈",
+    unwrapLines: "줄 바꿈 끄기",
     copyFailed: "클립보드에 복사하지 못했습니다",
     messageMenu: "메시지 작업",
     entryExtraExpand: "전체 콘텐츠 보기",

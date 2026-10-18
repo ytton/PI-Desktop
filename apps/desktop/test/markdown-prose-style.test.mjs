@@ -55,7 +55,9 @@ test("markdown renderer still streams by memoized blocks", () => {
   assert.match(markdownSource, /advanceMarkdownBlocks\(/);
   assert.match(markdownSource, /MAX_STREAMING_MARKDOWN_TAIL_CODE_UNITS/);
   assert.match(markdownSource, /const markdownComponents: Components =/);
-  assert.match(markdownSource, /className="code-block"/);
+  // The root class now carries the wrap mode; `markdown-code-wrap.test.mjs`
+  // pins the exact template, so this only keeps the streaming contract honest.
+  assert.match(markdownSource, /className=\{`code-block/);
   assert.match(markdownSource, /className="table-wrap"/);
 });
 

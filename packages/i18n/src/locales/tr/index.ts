@@ -415,6 +415,8 @@ export const tr = {
     showEarlierMessages: "Önceki iletileri göster",
     copy: "Kopyala",
     copied: "Kopyalandı",
+    wrapLines: "Satırları kaydır",
+    unwrapLines: "Satır kaydırmayı kapat",
     copyFailed: "Panoya kopyalanamadı",
     entryExtraExpand: "Bloğun tamamını göster",
     entryExtraCollapse: "Bloğu daralt",

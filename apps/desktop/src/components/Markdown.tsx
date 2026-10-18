@@ -46,6 +46,7 @@ import {
   IconExternal,
   IconGlobe,
   IconImage,
+  IconTextWrap,
   IconWorkflow,
 } from "./icons";
 import { TooltipButton } from "./ui";
@@ -236,18 +237,36 @@ export function HighlightedCode({
 function CodeBlock({ code, lang, ...position }: { code: string; lang: string } & SourcePositionProps) {
   const { t } = useTranslation();
   const { copied, copy } = useCopy();
+  // Long lines scroll by default and soft-wrap on request, per block: a wide
+  // table of log lines and a narrow snippet want different answers. The tooltip
+  // names the next action; the accessible name stays a stable action name, so
+  // `aria-pressed` reads as the mode (the copy button splits label and tooltip
+  // the same way).
+  const [wrapped, setWrapped] = useState(false);
+  const wrapLabel = wrapped ? t("chat.unwrapLines") : t("chat.wrapLines");
   return (
-    <div className="code-block" {...position}>
+    <div className={`code-block${wrapped ? " wrapped" : ""}`} {...position}>
       <div className="code-block-head">
         <span className="code-block-lang">{lang || "text"}</span>
-        <TooltipButton
-          className={`code-copy-btn ${copied ? "copied" : ""}`}
-          tooltip={copied ? t("chat.copied") : t("chat.copy")}
-          ariaLabel={t("chat.copy")}
-          onClick={() => copy(code)}
-        >
-          {copied ? <IconCheck size={13} /> : <IconCopy size={13} />}
-        </TooltipButton>
+        <div className="code-block-actions">
+          <TooltipButton
+            className={`code-wrap-btn${wrapped ? " active" : ""}`}
+            tooltip={wrapLabel}
+            ariaLabel={t("chat.wrapLines")}
+            aria-pressed={wrapped}
+            onClick={() => setWrapped((value) => !value)}
+          >
+            <IconTextWrap size={13} />
+          </TooltipButton>
+          <TooltipButton
+            className={`code-copy-btn ${copied ? "copied" : ""}`}
+            tooltip={copied ? t("chat.copied") : t("chat.copy")}
+            ariaLabel={t("chat.copy")}
+            onClick={() => copy(code)}
+          >
+            {copied ? <IconCheck size={13} /> : <IconCopy size={13} />}
+          </TooltipButton>
+        </div>
       </div>
       <pre>
         <code>

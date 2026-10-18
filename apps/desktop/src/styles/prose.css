@@ -466,18 +466,27 @@
   background: var(--ds-code-head-bg);
 }
 
-/* Shiki one-light token ink for the language rail and the copy button. */
+/* Head's right rail: the wrap toggle and the copy button travel as one pair. */
+.code-block-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Shiki one-light token ink for the language rail and its head controls. */
 :root[data-theme="light"] .code-block-lang {
   color: color-mix(in oklab, #383a42 62%, transparent);
 }
 
-:root[data-theme="light"] .code-block .code-copy-btn {
+:root[data-theme="light"] .code-block .code-copy-btn,
+:root[data-theme="light"] .code-block .code-wrap-btn {
   color: color-mix(in oklab, #383a42 62%, transparent);
   opacity: 0.9;
 }
 
 /* The hover fill is ours (--ds-code-hover-bg); the ink is the Shiki token. */
-:root[data-theme="light"] .code-block .code-copy-btn:hover {
+:root[data-theme="light"] .code-block .code-copy-btn:hover,
+:root[data-theme="light"] .code-block .code-wrap-btn:hover {
   color: #383a42;
 }
 
@@ -492,7 +501,8 @@
   user-select: none;
 }
 
-.code-block .code-copy-btn {
+.code-block .code-copy-btn,
+.code-block .code-wrap-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -506,17 +516,28 @@
 
 .code-block:hover .code-copy-btn,
 .code-block:focus-within .code-copy-btn,
-.code-block .code-copy-btn.copied {
+.code-block .code-copy-btn.copied,
+.code-block:hover .code-wrap-btn,
+.code-block:focus-within .code-wrap-btn,
+.code-block .code-wrap-btn.active {
   opacity: 1;
 }
 
-.code-block .code-copy-btn:hover {
+.code-block .code-copy-btn:hover,
+.code-block .code-wrap-btn:hover {
   color: var(--ds-text-secondary);
   background: var(--ds-code-hover-bg);
 }
 
 .code-block .code-copy-btn.copied {
   color: var(--ds-success);
+}
+
+/* Wrapping stays engaged until it is switched off, so the toggle reads as
+   pressed — a plate and the code's own ink instead of a passing hover. */
+.code-block .code-wrap-btn.active {
+  color: inherit;
+  background: var(--ds-code-hover-bg);
 }
 
 .prose-chat .code-block pre {
@@ -545,6 +566,18 @@
   color: inherit;
   border-radius: 0;
   box-shadow: none;
+}
+
+/*
+  Wrapped mode. The head's wrap toggle owns the state, and soft wrapping
+  replaces the sideways scroll: long lines and unbreakable tokens break inside
+  the transcript column instead of pushing a scrollbar under the block.
+*/
+.prose-chat .code-block.wrapped pre code {
+  width: auto;
+  min-width: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 /* Defensive: never reintroduce a nested wash on fenced code. */

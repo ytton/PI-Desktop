@@ -405,6 +405,8 @@ export const ptBR = {
     showEarlierMessages: "Mostrar mensagens anteriores",
     copy: "Copiar",
     copied: "Copiado",
+    wrapLines: "Quebrar linhas",
+    unwrapLines: "Desativar quebra de linha",
     copyFailed: "Não foi possível copiar para a área de transferência",
     messageMenu: "Ações da mensagem",
     conversationMenu: "Ações da conversa",

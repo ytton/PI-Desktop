@@ -5131,20 +5131,29 @@ must keep splitting are covered by `markdown-blocks.test.mjs`.
 - **Steps**: 1) Open the session in dark theme and scroll the answer. 2)
   Hover the code-block copy control and the table rows. 3) Expand a thinking
   disclosure that contains markdown. 4) Switch to light theme and re-check
-  contrast on inline code, blockquote rule, and code card.
+  contrast on inline code, blockquote rule, and code card. 5) Click that code
+  block's wrap toggle, then scroll horizontally with a trackpad over the block
+  and copy it.
 - **Expected**: Answer prose uses the `.prose-chat` hierarchy (h1–h6 ramp,
   accent-tinted blockquote, hairline-bordered inline code, zebra/hover table
   shell, inset code card with monospace language tag). A wide GFM table stays
   inside the transcript column: headers and cells wrap rather than overflowing.
   Thinking prose stays
   secondary/smaller and does not merge into the answer. Both themes keep
-  readable contrast; copy still copies raw fence text.
+  readable contrast; copy still copies raw fence text. The code block scrolls
+  sideways while unwrapped; after the toggle it soft-wraps inside the column
+  with no horizontal scrollbar, keeps its indentation, and its own block alone
+  changes — a second code block in the answer stays unwrapped. The engaged
+  toggle reports a pressed state, stays visible without hover, and names its
+  next action in a localized tooltip while its accessible name stays the stable
+  action; copy still returns the original text with its line breaks.
 - **Specs linked**: `04-ux/07-ui-design-system.md`,
   `04-ux/08-component-spec.md` §8.7
-- **Acceptance**: C (chat stream), Quality
+- **Acceptance**: C (chat stream), Quality, Accessibility, Localization
 - **Milestone**: M5
 - **Status**: Unit-covered (`user-select.test.mjs`, `thinking-ui.test.mjs`,
-  `markdown-prose-style.test.mjs`); full visual scenario Draft
+  `markdown-prose-style.test.mjs`, `markdown-code-wrap.test.mjs`); full visual
+  scenario Draft
 
 #### E2E-061: User message plaintext layout survives wrapping and reload
 

@@ -408,6 +408,8 @@ export const zhTW = {
     showEarlierMessages: "顯示更早的訊息",
     copy: "複製",
     copied: "已複製",
+    wrapLines: "自動換行",
+    unwrapLines: "關閉自動換行",
     copyFailed: "複製到剪貼簿失敗",
     messageMenu: "訊息操作",
     entryExtraExpand: "展開完整內容",

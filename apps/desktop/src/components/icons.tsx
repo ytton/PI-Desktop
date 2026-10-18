@@ -91,6 +91,7 @@ import {
   Target,
   Terminal,
   TextSelect,
+  TextWrap,
   Trash2,
   TriangleAlert,
   UserRound,
@@ -188,6 +189,8 @@ export const IconCopy = icon(Copy);
 /* Chat context menus: hand a message's rendered text to the platform selection. */
 export const IconTextSelect = icon(TextSelect);
 export const IconCode = icon(Code2);
+/* Fenced-code chrome: switch a code block between scrolling and soft wrapping. */
+export const IconTextWrap = icon(TextWrap);
 export const IconDatabase = icon(Database);
 export const IconCheck = icon(Check);
 export const IconBell = icon(Bell);
